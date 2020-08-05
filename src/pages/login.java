@@ -1,29 +1,35 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.*;
 
 public class login {
 
     WebDriver driver;
+    
+    @FindBy(id = "email")
+    WebElement eposta;
 
-    By eposta = By.id("email");
-    By sifre = By.id("password");
-    By login = By.cssSelector("#mainPage > main > div.center > form > div > div.col-md-4 > input");
+    @FindBy(id = "password")
+    WebElement sifre;
+    
+    @FindBy(css = "#mainPage > main > div.center > form > div > div.col-md-4 > input")
+    WebElement login;
 
     public login(WebDriver driver){
         this.driver = driver;
     }
 
     public void setUserName(String strUserName){
-        driver.findElement(eposta).sendKeys(strUserName);
+    	eposta.sendKeys(strUserName);
     }
     
     public void setPassword(String strPassword){
-         driver.findElement(sifre).sendKeys(strPassword);
+         sifre.sendKeys(strPassword);
     }
 
     public void clickLogin(){
-         driver.findElement(login).click();
+         login.click();
     }
 
     public void loginwebsite(String strUserName,String strPasword){

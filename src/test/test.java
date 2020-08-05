@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import db.db_connect;
 import pages.cartpage;
@@ -42,6 +43,10 @@ public class test {
         objCartPage=new cartpage(driver);
         objDB_Connect=new db_connect();
         
+        PageFactory.initElements(driver,objLogin);
+        PageFactory.initElements(driver,objHomePage);
+        PageFactory.initElements(driver,objCartPage);
+        
         con=objDB_Connect.getconnect();
         
         if(driver.getCurrentUrl().equals("https://www.itopya.com/")) {
@@ -50,6 +55,8 @@ public class test {
         	objDB_Connect.write_db("Website Baglantisi", "Basarisiz", java.time.LocalDateTime.now().toString());
         	return;
         }
+        
+        
         
         objHomePage.clickLoginPage();    
         objLogin.loginwebsite("enesdongez@gmail.com","ileriweb123");

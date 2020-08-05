@@ -34,6 +34,8 @@ public class test {
     	driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 
         driver.get("https://www.itopya.com/");
+        
+        driver.manage().window().maximize();
       
         objLogin=new login(driver);
         objHomePage=new homepage(driver);
@@ -54,9 +56,9 @@ public class test {
         Thread.sleep(1000);
         
         if(driver.getCurrentUrl().equals("https://www.itopya.com/")) {
-        	objDB_Connect.write_db("Giris Ýslemi", "Basarili", java.time.LocalDateTime.now().toString());
+        	objDB_Connect.write_db("Giris Ilemi", "Basarili", java.time.LocalDateTime.now().toString());
         }else {
-        	objDB_Connect.write_db("Giris Ýslemi", "Basarisiz", java.time.LocalDateTime.now().toString());
+        	objDB_Connect.write_db("Giris Ilemi", "Basarisiz", java.time.LocalDateTime.now().toString());
         	return;
         }
         
